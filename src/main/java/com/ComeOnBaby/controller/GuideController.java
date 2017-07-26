@@ -74,6 +74,7 @@ public class GuideController {
             recipeGuide.setTitle(title);
             recipeGuide.setUrlNaver(naverUrl);
 
+            recipeGuideService.addNewRecipeGuide(recipeGuide);
             //Save to file
 
             if (!files[0].isEmpty()) {
@@ -81,7 +82,7 @@ public class GuideController {
                 SaveFile saveFile = new SaveFile(pathToSaveFile, files);
                 ArrayList<String> fileNames = saveFile.saveFileAndGetName();
                 recipeGuide.setImageThumbnail(MainPathEnum.mainWebPath + "show-image/" + fileNames.get(0));
-                recipeGuideService.addNewRecipeGuide(recipeGuide);
+                recipeGuideService.updateRecipeGuide(recipeGuide);
             }
 
         } else {

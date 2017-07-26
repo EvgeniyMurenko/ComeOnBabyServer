@@ -4,6 +4,7 @@ public enum MainPathEnum {
 
     mainPath("opt/tomcat/webapps/comeonbaby/"),
     mainWebPath("http://34.253.54.136:8080/");
+/*    mainWebPath("http://localhost:8080/");*/
 
     private String value;
 

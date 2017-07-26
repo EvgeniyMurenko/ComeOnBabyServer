@@ -88,27 +88,29 @@
                         </div>
 
                         <% if (!isNew) {
-
                             List<String> images = (List<String>) request.getAttribute("images");
-                            Iterator<String> imageIterator = images.iterator();
-                            int imageIndex = 0;
+                            if(images.size()>0){
+                                Iterator<String> imageIterator = images.iterator();
+                                int imageIndex = 0;
 
-                            while (imageIterator.hasNext()) {
+                                while (imageIterator.hasNext()) {
 
-                                String name = imageIterator.next();
-                                if (!name.equals("")) {
-                                    String urlPic = MainPathEnum.mainWebPath + "show-image/" + name; %>
-                        <div class="form-group form-img-thumbnail">
-                            <a data-fancybox="gallery" href="<%out.print(urlPic);%>"><img src="<%out.print(urlPic);%>"
-                                                                                          alt="<%out.print(blogTitle);%>"
-                                                                                          class="img-thumbnail"></a>
-                            <a href="<%out.print("/my/delete-image-from-story/"+blog.getId()+"/"+imageIndex);%>"
-                               class="delete deleteConfirm"><i class="fa fa-times"></i></a>
-                        </div>
-                        <% imageIndex++;
-                        }
-                        } %>
-                        <% } %>
+                                    String name = imageIterator.next();
+                                    if (!name.equals("")) {
+                                        String urlPic = MainPathEnum.mainWebPath + "show-image/" + name; %>
+                                        <div class="form-group form-img-thumbnail">
+                                             <a data-fancybox="gallery" href="<%out.print(urlPic);%>">
+                                                 <img src="<%out.print(urlPic);%>" alt="<%out.print(blogTitle);%>" class="img-thumbnail">
+                                             </a>
+                                            <a href="<%out.print("/my/delete-image-from-story/"+blog.getId()+"/"+imageIndex);%>" class="delete deleteConfirm">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
+                                        <%imageIndex++;%>
+                                    <%}%>
+                                <%}%>
+                            <%}%>
+                        <%}%>
 
                         <div class="form-group">
                             <label class="control-label">영상</label>
@@ -122,7 +124,7 @@
                         %>
                         <div class="form-group">
                             <label class="control-label" for="description">기술</label>
-                            <textarea rows="4" class="form-control" id="description" name="text"><%out.print(text);%></textarea>
+                            <textarea rows="4" class="form-control" id="description" name="text" required><%out.print(text);%></textarea>
                         </div>
                         <%if (!isNew) {%>
                         <div class="form-group">

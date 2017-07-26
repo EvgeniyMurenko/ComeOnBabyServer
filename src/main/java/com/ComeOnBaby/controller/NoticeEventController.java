@@ -121,7 +121,7 @@ public class NoticeEventController {
 
 
             //Save to file
-            if (files != null || !files[0].isEmpty()) {
+            if (files != null && !files[0].isEmpty()) {
                 String pathToSaveFile = "pictures/";
                 SaveFile saveFile = new SaveFile(pathToSaveFile, files);
 

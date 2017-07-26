@@ -70,8 +70,11 @@ public class StoryAndRecipesController {
         Blog blog = blogService.findById(id);
 
         String images = blog.getImages();
+        List<String> imagesList = new ArrayList<>();
 
-        List<String> imagesList = Arrays.asList(images.split("<>"));
+        if (images != null && !"".equals(images)){
+            imagesList = Arrays.asList(images.split("<>"));
+        }
 
         editBlog.addObject("images", imagesList);
         editBlog.addObject("isNew", false);
@@ -112,7 +115,13 @@ public class StoryAndRecipesController {
     }
 
     @RequestMapping(value = "/save-new-story", method = RequestMethod.POST)
-    public ModelAndView saveNewStory(@RequestParam(value = "id") String id, @RequestParam("type") Integer type, @RequestParam("title") String title, @RequestParam("text") String text, @RequestParam("filePicture[]") MultipartFile[] files) {
+    public ModelAndView saveNewStory(@RequestParam(value = "id") String id,
+                                     @RequestParam("type") Integer type,
+                                     @RequestParam("title") String title,
+                                     @RequestParam("text") String text,
+                                     @RequestParam("filePicture[]") MultipartFile[] files) {
+
+        System.out.println("=======================save============= " + type);
 
         Blog blog;
 
@@ -127,7 +136,7 @@ public class StoryAndRecipesController {
             blog.setType(type);
             blog.setAppUser(appUser);
             blog.setId_user(appUser.getId());
-
+            blogService.addNewBlog(blog);
 
             //Save to file
 
@@ -141,7 +150,7 @@ public class StoryAndRecipesController {
 
                 blog.setImages(noticeFileNames);
 
-                blogService.addNewBlog(blog);
+                blogService.updateBlog(blog);
             }
 
         } else {

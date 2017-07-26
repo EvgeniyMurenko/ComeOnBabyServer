@@ -13,8 +13,11 @@ public class ImageEditFunctions {
 
     public static String updateImages(String images, MultipartFile[] files) {
 
-        // Get all images as list
-        ArrayList<String> imagesList = new ArrayList(Arrays.asList(images.split("<>")));
+        ArrayList<String> imagesList = new ArrayList<>();
+        if (images !=null && !"".equals(images)){
+            // Get all images as list
+            imagesList = new ArrayList(Arrays.asList(images.split("<>")));
+        }
 
         // Get all params
         String noticeFileNamesToReturn = "";
@@ -38,7 +41,7 @@ public class ImageEditFunctions {
         System.out.println("list size " + imagesList.size());
 
         //Save to file
-        if (files.length != 0) {
+        if (files.length > 0) {
             if (!files[0].isEmpty()) {
 
                 String pathToSaveFile = "pictures/";

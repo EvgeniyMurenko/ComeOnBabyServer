@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label for="title">표제</label>
                             <input type="text" class="form-control" name="title" id="title"
-                                   value="<%out.print(title);%>" placeholder="가이드 제목">
+                                   value="<%out.print(title);%>" placeholder="가이드 제목" required>
                         </div>
 
                         <%
