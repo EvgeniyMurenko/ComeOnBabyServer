@@ -81,12 +81,12 @@ $(document).ready(function () {
     });
 });
 
-$("#tenFilesInput").fileinput({
+/*$("#tenFilesInput").fileinput({
     allowedFileExtensions : ['jpg', 'jpeg','png'],
     overwriteInitial: false,
-    maxFileSize: 1024,
+    /!*maxFileSize: 1024,*!/
     maxFilesNum: 10,
-});
+});*/
 
 // CKEDITOR show
 var editor = CKEDITOR.replace('editor', {

@@ -25,7 +25,7 @@
                 <li><a href="/notice/events"><i class="fa fa-angle-double-right" aria-hidden="true"></i> 공지 / 이벤트</a></li>
                 <li><a href="/my/story"><i class="fa fa-angle-double-right" aria-hidden="true"></i> 자유 게시판</a></li>
                 <li><a href="/my/recipes"><i class="fa fa-angle-double-right" aria-hidden="true"></i> 나의 레시피</a></li>
-                <li><a href="/my/husband"><i class="fa fa-angle-double-right" aria-hidden="true"></i> 남편 이야기</a></li>
+                <li><a href="/my/husband"><i class="fa fa-angle-double-right" aria-hidden="true"></i> 올챙이교실</a></li>
                 <li><a href="/q-a/list"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Q &amp; A</a></li>
             </ul>
         </li>

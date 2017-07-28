@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 @Controller
@@ -56,6 +57,30 @@ public class GuideController {
 
         return editRecipe;
 
+    }
+
+    @RequestMapping(value = "/delete-image-from-recipe-guide/{recipeId}", method = RequestMethod.GET)
+    public ModelAndView deleteImageFromGuide(@PathVariable(value = "recipeId") Long recipeId) {
+
+        RecipeGuide recipeGuide = recipeGuideService.getRecipeGuideById(recipeId);
+
+        ImageEditFunctions.deleteImage(recipeGuide.getImageThumbnail());
+        recipeGuide.setImageThumbnail(null);
+        recipeGuideService.updateRecipeGuide(recipeGuide);
+
+        return new ModelAndView("redirect:/guide/edit-recipe/" + recipeGuide.getId());
+    }
+
+    @RequestMapping(value = "/delete-image-from-fertilization-guide/{guideId}", method = RequestMethod.GET)
+    public ModelAndView deleteImageFromFertilization(@PathVariable(value = "guideId") Long guideId) {
+
+        FertilizationGuide fertilizationGuide = fertilizationGuideService.getFertilizationGuideById(guideId);
+
+        ImageEditFunctions.deleteImage(fertilizationGuide.getImage());
+        fertilizationGuide.setImage(null);
+        fertilizationGuideService.updateFertilizationGuide(fertilizationGuide);
+
+        return new ModelAndView("redirect:/guide/edit-fertilization/" + fertilizationGuide.getId());
     }
 
     @RequestMapping(value = "/save-new-recipe", method = RequestMethod.POST)

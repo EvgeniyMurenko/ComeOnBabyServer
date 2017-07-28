@@ -77,13 +77,16 @@
                             <input type="text" class="form-control" name="url" id="url" value="<%out.print(urlNaver);%>" placeholder="URL">
                         </div>
 
-                        <% if (!isNew) {
+                        <% if (!isNew && fertilizationGuide.getImage()!=null && !"".equals(fertilizationGuide.getImage())) {
                             String urlPic = fertilizationGuide.getImage(); %>
-                        <div class="form-group form-img-thumbnail">
-                            <a data-fancybox="gallery" href="<%out.print(urlPic);%>"><img src="<%out.print(urlPic);%>"
-                                                                                          alt="<%out.print(title);%>"
-                                                                                          class="img-thumbnail"></a>
-                        </div>
+                            <div class="form-group form-img-thumbnail">
+                                <a data-fancybox="gallery" href="<%out.print(urlPic);%>">
+                                    <img src="<%out.print(urlPic);%>" alt="<%out.print(title);%>" class="img-thumbnail">
+                                </a>
+                                <%--<a href="/guide/delete-image-from-fertilization-guide/<%out.print(fertilizationGuide.getId());%>" class="delete deleteConfirm">
+                                    <i class="fa fa-times"></i>
+                                </a>--%>
+                            </div>
                         <%}%>
 
                         <div class="form-group">

@@ -81,13 +81,16 @@
                                    placeholder="URL">
                         </div>
 
-                        <% if (!isNew) {
+                        <% if (!isNew && recipeGuide.getImageThumbnail()!=null && !"".equals(recipeGuide.getImageThumbnail())) {
                             String urlPic = recipeGuide.getImageThumbnail(); %>
-                        <div class="form-group form-img-thumbnail">
-                            <a data-fancybox="gallery" href="<%out.print(urlPic);%>"><img src="<%out.print(urlPic);%>"
-                                                                                          alt="<%out.print(title);%>"
-                                                                                          class="img-thumbnail"></a>
-                        </div>
+                            <div class="form-group form-img-thumbnail">
+                                <a data-fancybox="gallery" href="<%out.print(urlPic);%>">
+                                    <img src="<%out.print(urlPic);%>" alt="<%out.print(title);%>" class="img-thumbnail">
+                                </a>
+                                <%--<a href="/guide/delete-image-from-recipe-guide/<%out.print(recipeGuide.getId());%>" class="delete deleteConfirm">
+                                    <i class="fa fa-times"></i>
+                                </a>--%>
+                            </div>
                         <%}%>
 
 

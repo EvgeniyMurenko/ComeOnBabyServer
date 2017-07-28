@@ -87,11 +87,16 @@ public class StoryAndRecipesController {
     public ModelAndView deleteBlog(@PathVariable Long id) {
         Blog blog = blogService.findById(id);
 
-        ArrayList<String> imagesList = new ArrayList(Arrays.asList(blog.getImages().split("<>")));
+        String images = blog.getImages();
+        List<String> imagesList = new ArrayList<>();
 
-        if(imagesList.size() != 0){
-            for (String fileName : imagesList){
-                ImageEditFunctions.deleteImage(fileName);
+        if (images != null && !"".equals(images)){
+            imagesList = Arrays.asList(images.split("<>"));
+
+            if(imagesList.size() != 0){
+                for (String fileName : imagesList){
+                    ImageEditFunctions.deleteImage(fileName);
+                }
             }
         }
 
@@ -140,10 +145,12 @@ public class StoryAndRecipesController {
 
             //Save to file
 
-            if (!files[0].isEmpty()) {
+            System.out.println("================file length " + files.length);
+
+            if (files.length >0 && !files[0].isEmpty()) {
+                System.out.println("===============save file==========");
                 String pathToSaveFile = "pictures/";
                 SaveFile saveFile = new SaveFile(pathToSaveFile, files);
-
                 ArrayList<String> fileNames = saveFile.saveFileAndGetName();
 
                 String noticeFileNames = ImageEditFunctions.generateStringWithSeparatorFromArray(fileNames);
